@@ -28,7 +28,7 @@ public class AdminDashboard extends AppCompatActivity {
         });
 
         btnPets.setOnClickListener(view -> {
-            startActivity(new Intent(this,ManagePets.class));
+            startActivity(new Intent(this,PetList.class));
         });
 
         btnLostPets.setOnClickListener(view -> {

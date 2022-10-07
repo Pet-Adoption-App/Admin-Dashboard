@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AdminDashboard">
         <activity
+            android:name=".PetList"
+            android:exported="false" />
+        <activity
             android:name=".ManageLostPetsNGO"
             android:exported="false" />
         <activity
