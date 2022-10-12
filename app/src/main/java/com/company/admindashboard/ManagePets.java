@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -16,12 +17,17 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ManagePets extends AppCompatActivity {
 
@@ -49,9 +55,10 @@ public class ManagePets extends AppCompatActivity {
         ivViewPets=findViewById(R.id.ivViewPets);
         btnApproveManagePets=findViewById(R.id.btnApproveManagePets);
         btnDeleteManagePets=findViewById(R.id.btnDeleteManagePets);
+
         petReference = FirebaseDatabase.getInstance().getReference().child("Approval_req");
         receivePetID = getIntent().getStringExtra("view_pet_id");
-
+        //System.out.println(receivePetID);
 
         petReference.child(receivePetID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -72,5 +79,56 @@ public class ManagePets extends AppCompatActivity {
 
             }
         });
+
+        btnApproveManagePets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                copyRecord(petReference.child(receivePetID),
+                        FirebaseDatabase.getInstance().getReference().child("Approved_req").child(receivePetID));
+
             }
+        });
+
+
+
+
+        btnDeleteManagePets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                petReference.child(receivePetID).removeValue();
+                Toast.makeText(ManagePets.this, "Disapproved", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+
+            }
+
+    public void copyRecord(DatabaseReference fromPath, final DatabaseReference toPath) {
+        fromPath.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                toPath.setValue(dataSnapshot.getValue(), new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if (databaseError != null) {
+                            Toast.makeText(getApplicationContext(), "Approval Failed", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Approved", Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+                });
+                petReference.child(receivePetID).removeValue();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), "onCancelled- copy fail", Toast.LENGTH_LONG).show();
+
+            }
+        });
+    }
+
         }
