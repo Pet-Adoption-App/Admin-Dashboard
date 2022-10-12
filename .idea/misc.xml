@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/Admin-Dashboard/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.22327898550724637" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/Admin-Dashboard/app/src/main/res/layout/activity_manage_pets.xml" value="0.22327898550724637" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/Admin-Dashboard/app/src/main/res/layout/activity_manage_pets_list.xml" value="0.13145896656534956" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/Admin-Dashboard/app/src/main/res/layout/activity_pet_list.xml" value="0.22327898550724637" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/Admin-Dashboard/app/src/main/res/layout/pet_card_view.xml" value="0.22327898550724637" />
         <entry key="..\:/Users/Kushagra Ahire/AndroidStudioProjects/AdminDashboard/app/src/main/res/drawable/custom_email_icon.xml" value="0.2115" />
         <entry key="..\:/Users/Kushagra Ahire/AndroidStudioProjects/AdminDashboard/app/src/main/res/drawable/custom_lock_icon.xml" value="0.154" />
         <entry key="..\:/Users/Kushagra Ahire/AndroidStudioProjects/AdminDashboard/app/src/main/res/drawable/email_focused.xml" value="0.2115" />
@@ -18,7 +23,6 @@
         <entry key="..\:/Users/Kushagra Ahire/AndroidStudioProjects/AdminDashboard/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Kushagra Ahire/AndroidStudioProjects/AdminDashboard/app/src/main/res/layout/activity_manage_lost_pets_ngo.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/Kushagra Ahire/AndroidStudioProjects/AdminDashboard/app/src/main/res/layout/activity_manage_pets.xml" value="0.22" />
-        <entry key="..\:/Users/Kushagra Ahire/AndroidStudioProjects/AdminDashboard/app/src/main/res/layout/activity_pet_list.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Kushagra Ahire/AndroidStudioProjects/AdminDashboard/app/src/main/res/layout/layout_bg.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/Kushagra Ahire/AndroidStudioProjects/AdminDashboard/app/src/main/res/layout/login_activity_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Kushagra Ahire/AndroidStudioProjects/AdminDashboard/app/src/main/res/layout/pet_card_view.xml" value="0.17074275362318841" />
