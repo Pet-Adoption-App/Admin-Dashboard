@@ -1,12 +1,12 @@
 package com.company.admindashboard;
 
 public class MainModel {
-    private String PetAge,PetBreed,PetName,ImageUrl,PetType,PetGender,PetAbout;
+    private String PetAge,PetBreed,PetName,ImageUrl,PetType,PetGender,PetAbout,PetUser;
     MainModel(){
 
     }
 
-    public MainModel(String petAge, String petBreed, String petName, String imageUrl, String petType, String petGender, String petAbout) {
+    public MainModel(String petAge, String petBreed, String petName, String imageUrl, String petType, String petGender, String petAbout, String petUser) {
         PetAge = petAge;
         PetBreed = petBreed;
         PetName = petName;
@@ -14,6 +14,7 @@ public class MainModel {
         PetType = petType;
         PetGender = petGender;
         PetAbout = petAbout;
+        PetUser = petUser;
     }
 
     public String getPetAge() {
@@ -70,5 +71,13 @@ public class MainModel {
 
     public void setPetAbout(String petAbout) {
         PetAbout = petAbout;
+    }
+
+    public String getPetUser() {
+        return PetUser;
+    }
+
+    public void setPetUser(String petUser) {
+        PetUser = petUser;
     }
 }
