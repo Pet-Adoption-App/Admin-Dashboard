@@ -1,12 +1,12 @@
 package com.company.admindashboard;
 
 public class MainModel {
-    private String PetAge,PetBreed,PetName,ImageUrl,PetType,PetGender,PetAbout,PetUser;
+    private String PetAge,PetBreed,PetName,ImageUrl,PetType,PetGender,PetAbout, City, State, Country, PetUser;
     MainModel(){
 
     }
 
-    public MainModel(String petAge, String petBreed, String petName, String imageUrl, String petType, String petGender, String petAbout, String petUser) {
+    public MainModel(String petAge, String petBreed, String petName, String imageUrl, String petType, String petGender,String petUser, String petAbout, String petCity, String petState, String petCountry) {
         PetAge = petAge;
         PetBreed = petBreed;
         PetName = petName;
@@ -14,6 +14,41 @@ public class MainModel {
         PetType = petType;
         PetGender = petGender;
         PetAbout = petAbout;
+        City = petCity;
+        State = petState;
+        Country = petCountry;
+        PetUser = petUser;
+    }
+
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String city) {
+        City = city;
+    }
+
+    public String getState() {
+        return State;
+    }
+
+    public void setState(String state) {
+        State = state;
+    }
+
+    public String getCountry() {
+        return Country;
+    }
+
+    public void setCountry(String country) {
+        Country = country;
+    }
+
+    public String getPetUser() {
+        return PetUser;
+    }
+
+    public void setPetUser(String petUser) {
         PetUser = petUser;
     }
 
@@ -71,13 +106,5 @@ public class MainModel {
 
     public void setPetAbout(String petAbout) {
         PetAbout = petAbout;
-    }
-
-    public String getPetUser() {
-        return PetUser;
-    }
-
-    public void setPetUser(String petUser) {
-        PetUser = petUser;
     }
 }

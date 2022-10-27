@@ -2,16 +2,23 @@ package com.company.admindashboard;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,19 +26,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-
+import java.util.HashMap;
+import java.util.Map;
 
 public class ManagePets extends AppCompatActivity {
 
-    String receivePetID;
-    DatabaseReference petReference;
+    String receivePetID, userID;
+    DatabaseReference petReference, approvedPetRef, userRef;
     ImageView ivViewPets;
-    TextView tvAboutViewPets, tvPetNameViewPets, tvPetAgeViewPets, tvPetBreedViewPets, tvPetGenderViewPets;
-    Button btnApproveManagePets, btnDeleteManagePets;
+    TextView tvAboutViewPets,tvPetNameViewPets,tvPetAgeViewPets,tvPetBreedViewPets,tvPetGenderViewPets, tvPetAddress ;
+    Button btnApproveManagePets,btnDeleteManagePets;
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(ManagePets.this, PetList.class));
+        startActivity(new Intent(ManagePets.this,PetList.class));
     }
 
     @Override
@@ -39,33 +47,35 @@ public class ManagePets extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_pets);
 
-        tvAboutViewPets = findViewById(R.id.tvAboutViewPets);
-        tvPetAgeViewPets = findViewById(R.id.tvPetAgeViewPets);
-        tvPetBreedViewPets = findViewById(R.id.tvPetBreedViewPets);
-        tvPetGenderViewPets = findViewById(R.id.tvPetGenderViewPets);
-        tvPetNameViewPets = findViewById(R.id.tvPetNameViewPets);
-        ivViewPets = findViewById(R.id.ivViewPets);
-        btnApproveManagePets = findViewById(R.id.btnApproveManagePets);
-        btnDeleteManagePets = findViewById(R.id.btnDeleteManagePets);
+        tvAboutViewPets=findViewById(R.id.tvAboutViewPets);
+        tvPetAgeViewPets=findViewById(R.id.tvPetAgeViewPets);
+        tvPetBreedViewPets=findViewById(R.id.tvPetBreedViewPets);
+        tvPetGenderViewPets=findViewById(R.id.tvPetGenderViewPets);
+        tvPetNameViewPets=findViewById(R.id.tvPetNameViewPets);
+        ivViewPets=findViewById(R.id.ivViewPets);
+        btnApproveManagePets=findViewById(R.id.btnApproveManagePets);
+        btnDeleteManagePets=findViewById(R.id.btnDeleteManagePets);
+        tvPetAddress = findViewById(R.id.tvPetAddressViewPets);
 
+        approvedPetRef = FirebaseDatabase.getInstance().getReference().child("Approved_req");
         petReference = FirebaseDatabase.getInstance().getReference().child("Approval_req");
+        userRef = FirebaseDatabase.getInstance().getReference().child("Users");
         receivePetID = getIntent().getStringExtra("view_pet_id");
-
+        //System.out.println(receivePetID);
 
         petReference.child(receivePetID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 MainModel pet = snapshot.getValue(MainModel.class);
 
-                tvPetNameViewPets.setText(pet.getPetName());
                 tvAboutViewPets.setText(pet.getPetAbout());
                 tvPetAgeViewPets.setText(pet.getPetAge());
                 tvPetBreedViewPets.setText(pet.getPetBreed());
+                tvPetNameViewPets.setText(pet.getPetName());
                 Picasso.get().load(pet.getImageUrl()).into(ivViewPets);
                 tvPetGenderViewPets.setText(pet.getPetGender());
-
-
-
+                tvPetAddress.setText(pet.getCity()+", "+pet.getState()+", "+pet.getCountry());
+                userID = pet.getPetUser();
             }
 
             @Override
@@ -78,12 +88,11 @@ public class ManagePets extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 copyRecord(petReference.child(receivePetID),
-                        FirebaseDatabase.getInstance().getReference().child("Approved_req").child(receivePetID));
-
-
-
+                        approvedPetRef.child(receivePetID));
             }
         });
+
+
 
 
         btnDeleteManagePets.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +105,8 @@ public class ManagePets extends AppCompatActivity {
         });
 
 
-    }
+
+            }
 
     public void copyRecord(DatabaseReference fromPath, final DatabaseReference toPath) {
         fromPath.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -109,7 +119,7 @@ public class ManagePets extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Approval Failed", Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(getApplicationContext(), "Approved", Toast.LENGTH_LONG).show();
-
+                            addToMyPets();
                         }
                     }
                 });
@@ -124,6 +134,18 @@ public class ManagePets extends AppCompatActivity {
         });
     }
 
+    private void addToMyPets() {
+        userRef.child(userID).child("MyPets").child(receivePetID).child("PetID").setValue(receivePetID)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            startActivity(new Intent(ManagePets.this,PetList.class));
+                        }else{
+                            Toast.makeText(ManagePets.this, "Something went Wrong", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
 
 }
-
