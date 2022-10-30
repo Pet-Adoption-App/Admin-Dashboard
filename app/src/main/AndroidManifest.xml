@@ -13,9 +13,6 @@
             android:name=".PetList"
             android:exported="false" />
         <activity
-            android:name=".ManageLostPetsNGO"
-            android:exported="false" />
-        <activity
             android:name=".ManageLostPets"
             android:exported="false" />
         <activity
@@ -24,6 +21,10 @@
         <activity
             android:name=".AdminDashboard"
             android:exported="false" />
+        <activity
+            android:name=".LostPetList"
+            android:exported="false" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">

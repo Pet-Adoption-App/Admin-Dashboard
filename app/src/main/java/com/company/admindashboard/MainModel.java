@@ -1,7 +1,7 @@
 package com.company.admindashboard;
 
 public class MainModel {
-    private String PetAge,PetBreed,PetName,ImageUrl,PetType,PetGender,PetAbout, City, State, Country, PetUser;
+    private String PetAge,PetBreed,PetName,ImageUrl,PetType,PetGender,PetAbout, City, State, Country, PetUser,PetAddress;
     MainModel(){
 
     }
@@ -18,6 +18,14 @@ public class MainModel {
         State = petState;
         Country = petCountry;
         PetUser = petUser;
+    }
+
+    public String getPetAddress() {
+        return PetAddress;
+    }
+
+    public void setPetAddress(String petAddress) {
+        PetAddress = petAddress;
     }
 
     public String getCity() {
@@ -107,4 +115,12 @@ public class MainModel {
     public void setPetAbout(String petAbout) {
         PetAbout = petAbout;
     }
+
+//    public String getPetAddress() {
+//        return PetAddress;
+//    }
+//
+//    public void setPetAddress(String petAddress) {
+//        PetAddress = petAddress;
+//    }
 }

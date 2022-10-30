@@ -1,6 +1,4 @@
 package com.company.admindashboard;
-
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -32,11 +30,7 @@ public class AdminDashboard extends AppCompatActivity {
         });
 
         btnLostPets.setOnClickListener(view -> {
-            startActivity(new Intent(this,ManageLostPets.class));
-        });
-        
-        btnLostPets.setOnClickListener(view -> {
-            startActivity(new Intent(this,ManageLostPetsNGO.class));
+            startActivity(new Intent(this,LostPetList.class));
         });
     }
 }
