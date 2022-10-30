@@ -31,6 +31,7 @@ public class ManageLostPets extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         startActivity(new Intent(ManageLostPets.this,LostPetList.class));
+        finish();
     }
 
     @Override

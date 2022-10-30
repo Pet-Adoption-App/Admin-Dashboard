@@ -36,6 +36,7 @@ public class ManagePets extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         startActivity(new Intent(ManagePets.this,PetList.class));
+        finish();
     }
 
     @Override

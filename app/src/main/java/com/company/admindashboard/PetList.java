@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -15,6 +16,12 @@ public class PetList extends AppCompatActivity {
     RecyclerView recyclerView;
     MainAdapter mainAdapter;
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this,AdminDashboard.class));
+        finish();
+        super.onBackPressed();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
