@@ -1,4 +1,4 @@
-package com.company.admindashboard;
+package com.company.admindashboard.AdoptionPets;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.company.admindashboard.Model.MainModel;
+import com.company.admindashboard.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -35,7 +37,7 @@ public class ManagePets extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(ManagePets.this,PetList.class));
+        startActivity(new Intent(ManagePets.this, PetList.class));
         finish();
     }
 

@@ -10,23 +10,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AdminDashboard">
         <activity
-            android:name=".PetList"
+            android:name=".AdoptionPets.PetList"
             android:exported="false" />
         <activity
-            android:name=".ManageLostPets"
+            android:name=".LostPet.ManageLostPets"
             android:exported="false" />
         <activity
-            android:name=".ManagePets"
+            android:name=".AdoptionPets.ManagePets"
             android:exported="false" />
         <activity
-            android:name=".AdminDashboard"
+            android:name=".Main.AdminDashboard"
             android:exported="false" />
         <activity
-            android:name=".LostPetList"
+            android:name=".LostPet.LostPetList"
             android:exported="false" />
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".LoginActivity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

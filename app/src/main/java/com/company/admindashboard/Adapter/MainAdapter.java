@@ -1,4 +1,4 @@
-package com.company.admindashboard;
+package com.company.admindashboard.Adapter;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.company.admindashboard.Model.MainModel;
+import com.company.admindashboard.AdoptionPets.ManagePets;
+import com.company.admindashboard.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
