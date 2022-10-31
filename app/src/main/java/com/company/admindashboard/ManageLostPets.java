@@ -84,7 +84,8 @@ public class ManageLostPets extends AppCompatActivity {
             public void onClick(View view) {
                 copyRecord(LostpetReference.child(receivePetID),
                         approvedLostPetRef.child(receivePetID));
-
+                startActivity(new Intent(ManageLostPets.this,LostPetList.class));
+                finish();
             }
         });
 
@@ -96,7 +97,8 @@ public class ManageLostPets extends AppCompatActivity {
             public void onClick(View view) {
                 LostpetReference.child(receivePetID).removeValue();
                 Toast.makeText(ManageLostPets.this, "Disapproved", Toast.LENGTH_SHORT).show();
-
+                startActivity(new Intent(ManageLostPets.this,LostPetList.class));
+                finish();
             }
         });
 

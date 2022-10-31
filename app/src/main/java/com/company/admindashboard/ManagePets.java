@@ -86,6 +86,8 @@ public class ManagePets extends AppCompatActivity {
             public void onClick(View view) {
                 copyRecord(petReference.child(receivePetID),
                         approvedPetRef.child(receivePetID));
+                startActivity(new Intent(ManagePets.this,PetList.class));
+                finish();
             }
         });
 
@@ -97,7 +99,8 @@ public class ManagePets extends AppCompatActivity {
             public void onClick(View view) {
                 petReference.child(receivePetID).removeValue();
                 Toast.makeText(ManagePets.this, "Disapproved", Toast.LENGTH_SHORT).show();
-
+                startActivity(new Intent(ManagePets.this,PetList.class));
+                finish();
             }
         });
 
