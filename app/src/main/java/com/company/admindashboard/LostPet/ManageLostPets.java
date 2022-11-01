@@ -52,12 +52,11 @@ public class ManageLostPets extends AppCompatActivity {
         btnApproveManagePetsNGO=findViewById(R.id.btnApproveManagePetsNGO);
         btnDeleteManagePetsNGO=findViewById(R.id.btnDeleteManagePetsNGO);
 
-
         approvedLostPetRef = FirebaseDatabase.getInstance().getReference().child("Lost_Approved_req");
         LostpetReference = FirebaseDatabase.getInstance().getReference().child("Lost_Approval_req");
         NgoRef = FirebaseDatabase.getInstance().getReference().child("NGO");
         receivePetID = getIntent().getStringExtra("view_lost_pet_id");
-        //System.out.println(receivePetID);
+
 
         LostpetReference.child(receivePetID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -72,7 +71,6 @@ public class ManageLostPets extends AppCompatActivity {
                 tvPetGenderViewPetsNGO.setText(pet.getPetGender());
                 tvPetAddressNGO.setText(pet.getPetAddress());
                 NgoID = pet.getPetUser();
-                System.out.println("%%%%%%%%%%%%%%%%%%%%%******>>"+NgoID);
             }
 
             @Override
@@ -92,8 +90,6 @@ public class ManageLostPets extends AppCompatActivity {
         });
 
 
-
-
         btnDeleteManagePetsNGO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,8 +99,6 @@ public class ManageLostPets extends AppCompatActivity {
                 finish();
             }
         });
-
-
 
     }
 
