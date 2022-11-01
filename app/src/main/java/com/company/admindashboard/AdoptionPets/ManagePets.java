@@ -100,7 +100,6 @@ public class ManagePets extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 petReference.child(receivePetID).removeValue();
-                userRef.child(userID).child("MyPets").child(receivePetID).removeValue();
                 Toast.makeText(ManagePets.this, "Disapproved", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(ManagePets.this,PetList.class));
                 finish();

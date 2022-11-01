@@ -98,7 +98,6 @@ public class ManageLostPets extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 LostpetReference.child(receivePetID).removeValue();
-                NgoRef.child(NgoID).child("NgoPets").child(receivePetID).removeValue();
                 Toast.makeText(ManageLostPets.this, "Disapproved", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(ManageLostPets.this,LostPetList.class));
                 finish();
