@@ -1,4 +1,4 @@
-package com.company.admindashboard;
+package com.company.admindashboard.LostPet;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.company.admindashboard.Model.MainModel;
+import com.company.admindashboard.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +32,7 @@ public class ManageLostPets extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(ManageLostPets.this,LostPetList.class));
+        startActivity(new Intent(ManageLostPets.this, LostPetList.class));
         finish();
     }
 

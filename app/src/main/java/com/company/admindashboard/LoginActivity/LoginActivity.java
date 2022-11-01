@@ -1,4 +1,4 @@
-package com.company.admindashboard;
+package com.company.admindashboard.LoginActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.company.admindashboard.Main.AdminDashboard;
+import com.company.admindashboard.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -36,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
             String password = etLoginPassword.getText().toString();
 
             if(username.equals("admin") && password.equals("1234")){
-                startActivity(new Intent(this,AdminDashboard.class));
+                startActivity(new Intent(this, AdminDashboard.class));
             }else{
                 Toast.makeText(this, "Invalid Login Credentials", Toast.LENGTH_SHORT).show();
             }

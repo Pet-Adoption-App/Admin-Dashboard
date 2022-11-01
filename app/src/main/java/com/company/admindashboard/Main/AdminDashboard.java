@@ -1,4 +1,4 @@
-package com.company.admindashboard;
+package com.company.admindashboard.Main;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -8,6 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.company.admindashboard.AdoptionPets.PetList;
+import com.company.admindashboard.LoginActivity.LoginActivity;
+import com.company.admindashboard.LostPet.LostPetList;
+import com.company.admindashboard.R;
 
 public class AdminDashboard extends AppCompatActivity {
 
@@ -27,7 +32,7 @@ public class AdminDashboard extends AppCompatActivity {
         builder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                startActivity(new Intent(AdminDashboard.this,LoginActivity.class));
+                startActivity(new Intent(AdminDashboard.this, LoginActivity.class));
                 AdminDashboard.this.finish();
             }
         });
@@ -54,11 +59,11 @@ public class AdminDashboard extends AppCompatActivity {
         });
 
         btnPets.setOnClickListener(view -> {
-            startActivity(new Intent(this,PetList.class));
+            startActivity(new Intent(this, PetList.class));
         });
 
         btnLostPets.setOnClickListener(view -> {
-            startActivity(new Intent(this,LostPetList.class));
+            startActivity(new Intent(this, LostPetList.class));
         });
     }
 }

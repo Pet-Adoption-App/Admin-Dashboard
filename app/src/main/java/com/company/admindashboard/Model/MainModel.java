@@ -1,4 +1,4 @@
-package com.company.admindashboard;
+package com.company.admindashboard.Model;
 
 public class MainModel {
     private String PetAge,PetBreed,PetName,ImageUrl,PetType,PetGender,PetAbout, City, State, Country, PetUser,PetAddress;
