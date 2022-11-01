@@ -40,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
 
             if(username.equals("admin") && password.equals("1234")){
                 startActivity(new Intent(this, AdminDashboard.class));
+                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+                finish();
             }else{
                 Toast.makeText(this, "Invalid Login Credentials", Toast.LENGTH_SHORT).show();
             }
