@@ -32,8 +32,8 @@ public class LostPetAdapter extends FirebaseRecyclerAdapter<MainModel,LostPetAda
 
     @Override
     protected void onBindViewHolder(@NonNull LostPetAdapter.myViewHolder holder, int position, @NonNull MainModel model) {
-        holder.PetName.setText(model.getPetName());
-        holder.PetBreed.setText(model.getPetBreed());
+        holder.PetName.setText(model.getPetBreed());
+        holder.PetBreed.setText(model.getPetGender());
         Picasso.get().load(model.getImageUrl()).into(holder.ImageUrl);
 
         holder.itemView.setOnClickListener(view -> {
