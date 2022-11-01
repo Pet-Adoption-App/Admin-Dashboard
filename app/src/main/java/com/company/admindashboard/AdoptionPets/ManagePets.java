@@ -60,7 +60,7 @@ public class ManagePets extends AppCompatActivity {
         petReference = FirebaseDatabase.getInstance().getReference().child("Approval_req");
         userRef = FirebaseDatabase.getInstance().getReference().child("Users");
         receivePetID = getIntent().getStringExtra("view_pet_id");
-        //System.out.println(receivePetID);
+
 
         petReference.child(receivePetID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

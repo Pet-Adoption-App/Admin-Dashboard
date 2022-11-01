@@ -116,11 +116,4 @@ public class MainModel {
         PetAbout = petAbout;
     }
 
-//    public String getPetAddress() {
-//        return PetAddress;
-//    }
-//
-//    public void setPetAddress(String petAddress) {
-//        PetAddress = petAddress;
-//    }
 }

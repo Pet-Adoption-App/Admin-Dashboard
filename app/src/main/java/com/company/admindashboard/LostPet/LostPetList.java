@@ -34,6 +34,7 @@ public class LostPetList extends AppCompatActivity {
 
 
         recyclerView=(RecyclerView)findViewById(R.id.rv_lost_list);
+        recyclerView.setItemAnimator(null);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         FirebaseRecyclerOptions<MainModel> options =
